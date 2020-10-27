@@ -3,7 +3,7 @@ from master_scripts.classes import Experiment
 from master_scripts.data_functions import (get_tf_device,
                                            get_git_root)
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, InputLayer
+from tensorflow.keras.layers import Dense, Conv2D, Flatten
 import json
 import tensorflow as tf
 import numpy as np
@@ -31,9 +31,13 @@ if "np.log" in config['scaling']:
 # set tf random seed
 tf.random.set_seed(config['random_seed'])
 with tf.device(get_tf_device(20)):
-    # Build model
+    # Small Dense network
     model = Sequential()
-    model.add(InputLayer(input_shape=(256,)))
+    model.add(
+        Conv2D(10, kernel_size=3, activation='relu', input_shape=(16, 16, 1),
+               padding='same')
+    )
+    model.add(Flatten())
     model.add(Dense(1, activation='sigmoid'))
     model.compile(
         optimizer='adam',
@@ -46,7 +50,7 @@ with tf.device(get_tf_device(20)):
         model=model,
         config=config,
         model_type="classification",
-        experiment_name="full_training_logistic"
+        experiment_name="full_training_cnn_small"
     )
     experiment.run_kfold(
         images,

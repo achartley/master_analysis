@@ -31,9 +31,10 @@ if "np.log" in config['scaling']:
 # set tf random seed
 tf.random.set_seed(config['random_seed'])
 with tf.device(get_tf_device(20)):
-    # Build model
+    # Small Dense network
     model = Sequential()
     model.add(InputLayer(input_shape=(256,)))
+    model.add(Dense(10, activation='relu'))
     model.add(Dense(1, activation='sigmoid'))
     model.compile(
         optimizer='adam',
@@ -46,7 +47,7 @@ with tf.device(get_tf_device(20)):
         model=model,
         config=config,
         model_type="classification",
-        experiment_name="full_training_logistic"
+        experiment_name="full_training_dense_small"
     )
     experiment.run_kfold(
         images,
