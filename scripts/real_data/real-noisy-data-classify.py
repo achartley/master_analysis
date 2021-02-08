@@ -20,9 +20,9 @@ config = {
 #    'CLASSIFIER': "367e35da671b.h5",
 #    'ENERGY_MODEL': "2137bd6d101c.h5",
 #    'POSITIONS_MODEL': "337cafc233f7.h5",
-    'CLASSIFIER': "7eb0ab25bf53.h5",
-    'ENERGY_MODEL': "7eb0ab25bf53.h5",
-    'POSITIONS_MODEL': "7eb0ab25bf53.h5",
+    'CLASSIFIER': "eb103c3cb3c4.h5",
+    'ENERGY_MODEL': "eb103c3cb3c4.h5",
+    'POSITIONS_MODEL': "eb103c3cb3c4.h5",
 }
 
 # Note this is not "real data" this is a test sanity check the models
